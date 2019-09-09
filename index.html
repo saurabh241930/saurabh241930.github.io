@@ -310,13 +310,13 @@ Complete overview of the pipeline that I created to run Video Fraud detection mo
 								
 
 								<ul>
-									<p>Version 1:</p> <br>
-									<li>Total Video classification + Object detection inference time = 13 sec ~ 15 sec</li>
+									<p>Version 1:</p> 
+									<li>Total Video classification + Object detection inference time = 13 sec ~ 15 sec</li> <br>
 									
-									<p>Flaw :</p> <br>
-									<li>Inference time was really long</li>
+									<p>Flaw :</p>
+									<li>Inference time was really long</li><br>
 									
-									<p>Reason :</p> <br>
+									<p>Reason :</p> 
 									<li>I was loading separate CNN model into memory to extract CNN features of video frames in CNN+LSTM model</li>
 									
 								
@@ -339,11 +339,11 @@ Complete overview of the pipeline that I created to run Video Fraud detection mo
 										
 										
 <ul>
-									<p>Version 2:</p> <br>
-									<li>Total Video classification + Object detection inference time =  2 sec ~ 4 sec</li>
+									<p>Version 2:</p> 
+									<li>Total Video classification + Object detection inference time =  2 sec ~ 4 sec</li><br>
 									
-									<p>Changes :</p> <br>
-									<li>IInstead of Loading the CNN model in memory at only the video classification section we are extracting image features at the initial step.</li>
+									<p>Changes :</p> 
+									<li>IInstead of Loading the CNN model in memory at only the video classification section we are extracting image features at the initial step.</li><br>
 									
 																	
 								
