@@ -1,169 +1,580 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Saurabh Pandey | Full Stack Developer</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-<style>
-        body {
-            font-family: Arial, sans-serif;
-            font-size: 10.5pt;
-            margin: 0.4in;
-            line-height: 1.15;
-        }
-        .header {
-            text-align: center;
-            margin-bottom: 12px;
-        }
-        h1 {
-            font-size: 18pt;
+        * {
             margin: 0;
-            color: #2B579A;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
-        h2 {
-            font-size: 12pt;
-            margin: 12px 0 4px 0;
-            color: #2B579A;
-            border-bottom: 1px solid #2B579A;
+
+        html,
+        body {
+            height: 100%;
+            overflow: hidden;
         }
-        .subtitle {
-            font-weight: bold;
-            margin: 4px 0;
+
+        body {
+            background-color: #111;
+            color: #fff;
+            position: relative;
         }
-        .contact {
-            margin: 4px 0;
+
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at center, rgba(255, 126, 0, 0.03) 0%, rgba(0, 0, 0, 0) 70%);
+            pointer-events: none;
+            z-index: 0;
         }
-        .profile {
-            font-style: italic;
-            font-size: 9.5pt;
-            margin-bottom: 8px;
+
+        .hero {
+            height: 100vh;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            position: relative;
         }
-        .job {
-            margin-bottom: 8px;
+
+        .container {
+            width: 90%;
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: relative;
+            z-index: 2;
         }
-        .job-title {
-            font-weight: bold;
+
+        .text-content {
+            width: 55%;
+        }
+
+        .greeting {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            font-weight: 500;
+        }
+
+        .name {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: #FF3131;
+        }
+
+        .headline {
+            font-size: 3.5rem;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+        }
+
+        .description {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: #aaa;
+            margin-bottom: 2rem;
+        }
+
+        .image-content {
+            width: 40%;
+            text-align: right;
+        }
+
+        .profile-container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .image-blend {
+            width: 100%;
+            height: 500px;
+            background-image: url('https://i.imgur.com/QMNfgPy.jpeg');
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+            filter: grayscale(80%) contrast(1.05) brightness(0.95);
+            opacity: 0.9;
+            mix-blend-mode: luminosity;
+            mask-image: radial-gradient(ellipse at center, black 30%, transparent 70%);
+            -webkit-mask-image: radial-gradient(ellipse at center, black 30%, transparent 70%);
+            position: relative;
+        }
+
+        .image-blend::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, #111 0%, transparent 20%, transparent 80%, #111 100%);
+            pointer-events: none;
+        }
+
+        .divider {
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            margin: 2rem 0;
+            position: relative;
+        }
+
+        .divider::before,
+        .divider::after {
+            content: "•";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #FF3131;
+            font-size: 20px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: transparent;
+            color: #FF3131;
+            border: 2px solid #FF3131;
+            border-radius: 30px;
+            font-size: 1rem;
+            font-weight: 600;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .cta-button:hover {
+            background-color: #FF3131;
+            color: #111;
+        }
+
+        .learn-more {
+            display: inline-flex;
+            align-items: center;
+            color: #FF3131;
+            text-decoration: none;
+            font-size: 1.1rem;
+            margin-top: 2rem;
+        }
+
+        .learn-more i {
+            margin-left: 8px;
+            transition: transform 0.3s ease;
+        }
+
+        .learn-more:hover i {
+            transform: translateX(5px);
+        }
+
+        /* Mobile responsiveness */
+        @media (max-width: 920px) {
+            .container {
+                flex-direction: column-reverse;
+                text-align: center;
+                justify-content: center;
+            }
+
+            .text-content,
+            .image-content {
+                width: 100%;
+            }
+
+            .text-content {
+                margin-top: 2rem;
+            }
+
+            .headline {
+                font-size: 2.8rem;
+            }
+
+            .profile-img {
+                width: 60%;
+                max-width: 300px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .headline {
+                font-size: 2.2rem;
+            }
+
+            .description {
+                font-size: 1rem;
+            }
+
+            .greeting,
+            .name {
+                font-size: 1.5rem;
+            }
+
+            .profile-img {
+                width: 80%;
+            }
+        }
+
+        /* Download CV Modal */
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .modal.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal-content {
+            background-color: #222;
+            padding: 30px;
+            border-radius: 12px;
+            max-width: 500px;
+            width: 90%;
+            transition: all 0.4s ease;
+            transform: translateY(-50px);
+            border: 1px solid #333;
+        }
+
+        .modal.active .modal-content {
+            transform: translateY(0);
+        }
+
+        .modal-header {
             display: flex;
             justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
         }
-        ul {
-            margin: 4px 0;
-            padding-left: 18px;
+
+        .modal-title {
+            font-size: 1.5rem;
+            color: #fff;
         }
-        li {
-            margin-bottom: 2px;
-            font-size: 9.5pt;
+
+        .close-modal {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #777;
+            transition: color 0.3s ease;
         }
-        .skills-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 5px;
+
+        .close-modal:hover {
+            color: #fff;
         }
-        .skill-category {
-            font-weight: bold;
+
+        .modal-body {
+            margin-bottom: 25px;
+            color: #aaa;
         }
-        .two-column {
+
+        .modal-footer {
             display: flex;
-            justify-content: space-between;
+            justify-content: flex-end;
         }
-        .column {
-            width: 48%;
+
+        .download-btn {
+            padding: 10px 25px;
+            background-color: #FF3131;
+            color: #111;
+            border: none;
+            border-radius: 30px;
+            font-weight: 600;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .download-btn:hover {
+            background-color: #e67200;
         }
     </style>
 </head>
+
 <body>
-    <div class="header">
-        <h1>SAURABH PANDEY</h1>
-        <div class="subtitle">Full Stack Developer</div>
-        <div class="contact">sp241930@gmail.com | +918369981288</div>
-        <div class="profile">Results-driven Full-stack developer with 6+ years of expertise across modern tech stacks. Proficient in Node.js, Python, React.js, AWS, and Generative AI with proven track record of building scalable applications, optimizing performance, and implementing AI-powered solutions that drive business growth. Experienced in architecting end-to-end systems from database design to frontend implementation and DevOps automation.</div>
+    <section class="hero">
+        <div class="container">
+            <div class="text-content">
+                <h2 class="greeting">Hi, I'm</h2>
+                <h2 class="name">Saurabh.</h2>
+                <div class="divider"></div>
+                <h1 class="headline">I build value through development.</h1>
+                <p class="description">Full-stack developer with 6+ years of expertise across modern tech stacks.
+                    Proficient in Node.js, Python, React.js, AWS, and Generative AI.</p>
+                <button id="download-cv" class="cta-button">Download CV</button>
+
+            </div>
+            <div class="image-content">
+                <div class="profile-container">
+                    <!-- Base64 encoded version of the image would normally go here -->
+                    <!-- Using CSS techniques to blend the image with the background -->
+                    <div class="image-blend"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Download CV Modal -->
+    <div id="cvModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Download CV</h3>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p>Thank you for your interest in my CV. Click the button below to download.</p>
+            </div>
+            <div class="modal-footer">
+                <button id="downloadBtn" class="download-btn">
+                    <i class="fas fa-download"></i> Download PDF
+                </button>
+            </div>
+        </div>
     </div>
 
-    <h2>EXPERIENCE</h2>
-    
-    <div class="job">
-        <div class="job-title">
-            <span>Europ Assistance, Mumbai — Full-stack Developer</span>
-            <span>May 2024 - Present</span>
-        </div>
-        <ul>
-            <li>Built generative AI recommendation system for HDFC Bank concierge portal that increased cross-selling revenue by 28%</li>
-            <li>Developed CRM system to capture intelligence on customer spending patterns and activities for personalized service</li>
-            <li>Created vector database with customer patterns and integrated with GPT for automated recommendations exceeding human agent capabilities</li>
-            <li>Implemented intelligent concierge tool enabling curated personalized service offerings that traditional agents couldn't provide</li>
-        </ul>
-    </div>
-    
-    <div class="job">
-        <div class="job-title">
-            <span>Neosoft, Mumbai — Full-stack Developer</span>
-            <span>Sep 2022 - Apr 2024</span>
-        </div>
-        <ul>
-            <li>Implemented MERN stack to build Kotak General Insurance Portal connecting customers, vendors, and investigators</li>
-            <li>Created failsafe mechanisms for handling banking service dependencies</li>
-            <li>Managed development and DevOps for UAT & Production environments</li>
-        </ul>
-    </div>
-    
-    <div class="job">
-        <div class="job-title">
-            <span>Whitecrow Digital, Mumbai — Full-stack Developer</span>
-            <span>Dec 2021 - Aug 2022</span>
-        </div>
-        <ul>
-            <li>Designed centralized email engagement system using Redis-bee-queue & AWS SES</li>
-            <li>Optimized APIs by offloading heavy operations to background tasks via AWS SQS</li>
-            <li>Implemented dynamic Redis-based caching and created API gateway encapsulation layer</li>
-        </ul>
-    </div>
-    
-    <div class="job">
-        <div class="job-title">
-            <span>Vitorscape, Mumbai — Co-founder & Backend Developer</span>
-            <span>Jan 2020 - Dec 2021</span>
-        </div>
-        <ul>
-            <li>Built attendance and payroll system for Classic Marble using Node.js & React</li>
-            <li>Designed architecture for facial recognition-based management using Flask, React & MongoDB</li>
-            <li>Developed publish-subscribe backend connecting web servers to AGVs via MQTT</li>
-        </ul>
-    </div>
-    
-    <div class="job">
-        <div class="job-title">
-            <span>Sensus Labs, Mumbai — Associate Backend Developer</span>
-            <span>Aug 2018 - Sep 2019</span>
-        </div>
-        <ul>
-            <li>Developed backend connecting ML model outputs to MongoDB using Express.js and Node.js</li>
-            <li>Built deep learning model using TensorFlow & OpenCV for customer demographics analysis</li>
-        </ul>
-    </div>
+    <!-- JavaScript -->
+    <script>
+        // Modal functionality
+        const modal = document.getElementById('cvModal');
+        const downloadButton = document.getElementById('download-cv');
+        const closeButton = document.querySelector('.close-modal');
+        const downloadPdfButton = document.getElementById('downloadBtn');
 
-    <div class="two-column">
-        <div class="column">
-            <h2>TECHNICAL SKILLS</h2>
-            <ul>
-                <li><span class="skill-category">Languages:</span> JavaScript/TypeScript, Node.js, Python, HTML5, CSS3, SQL</li>
-                <li><span class="skill-category">Frontend:</span> React.js, Redux, Next.js, Tailwind CSS, Material UI, Responsive Design</li>
-                <li><span class="skill-category">Backend:</span> Express.js, Flask, RESTful APIs, GraphQL, Microservices, JWT</li>
-                <li><span class="skill-category">Databases:</span> MongoDB, PostgreSQL, Redis, Elasticsearch, Vector Databases</li>
-                <li><span class="skill-category">Cloud/DevOps:</span> AWS (EC2, S3, SES, SQS, Lambda), Docker, CI/CD, Git</li>
-                <li><span class="skill-category">Messaging:</span> RabbitMQ, MQTT, WebSockets, Pusher, Kafka</li>
-                <li><span class="skill-category">ML/AI:</span> Generative AI, LLMs, TensorFlow, OpenCV, Vector DBs, GPT Integration</li>
-                <li><span class="skill-category">Other:</span> Agile Methodologies, System Design, Performance Optimization</li>
-            </ul>
-        </div>
-        <div class="column">
-            <h2>EDUCATION</h2>
-            <div>Bachelor in Information Technology</div>
-            
-            <h2>BLOGS</h2>
-            <ul>
-                <li>Understanding Node.js Event-driven structure</li>
-                <li>Reddit Roastme NLP & Computer vision-based bot</li>
-                <li>Feature detections in computer vision</li>
-            </ul>
-        </div>
-    </div>
+        downloadButton.addEventListener('click', () => {
+            modal.classList.add('active');
+        });
+
+        closeButton.addEventListener('click', () => {
+            modal.classList.remove('active');
+        });
+
+        window.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.classList.remove('active');
+            }
+        });
+
+        // Function to generate CV PDF
+        downloadPdfButton.addEventListener('click', () => {
+            // Create CV content from HTML
+            const cvContent = `
+            <!DOCTYPE html>
+            <html>
+            <head>
+                <style>
+                    body {
+                        font-family: Arial, sans-serif;
+                        font-size: 10.5pt;
+                        margin: 0.4in;
+                        line-height: 1.15;
+                    }
+                    .header {
+                        text-align: center;
+                        margin-bottom: 12px;
+                    }
+                    h1 {
+                        font-size: 18pt;
+                        margin: 0;
+                        color: #2B579A;
+                    }
+                    h2 {
+                        font-size: 12pt;
+                        margin: 12px 0 4px 0;
+                        color: #2B579A;
+                        border-bottom: 1px solid #2B579A;
+                    }
+                    .subtitle {
+                        font-weight: bold;
+                        margin: 4px 0;
+                    }
+                    .contact {
+                        margin: 4px 0;
+                    }
+                    .profile {
+                        font-style: italic;
+                        font-size: 9.5pt;
+                        margin-bottom: 8px;
+                    }
+                    .job {
+                        margin-bottom: 8px;
+                    }
+                    .job-title {
+                        font-weight: bold;
+                        display: flex;
+                        justify-content: space-between;
+                    }
+                    ul {
+                        margin: 4px 0;
+                        padding-left: 18px;
+                    }
+                    li {
+                        margin-bottom: 2px;
+                        font-size: 9.5pt;
+                    }
+                    .skills-grid {
+                        display: grid;
+                        grid-template-columns: 1fr 1fr;
+                        gap: 5px;
+                    }
+                    .skill-category {
+                        font-weight: bold;
+                    }
+                    .two-column {
+                        display: flex;
+                        justify-content: space-between;
+                    }
+                    .column {
+                        width: 48%;
+                    }
+                </style>
+            </head>
+            <body>
+                <div class="header">
+                    <h1>SAURABH PANDEY</h1>
+                    <div class="subtitle">Full Stack Developer</div>
+                    <div class="contact">sp241930@gmail.com | +918369981288</div>
+                    <div class="profile">Results-driven Full-stack developer with 6+ years of expertise across modern tech stacks. Proficient in Node.js, Python, React.js, AWS, and Generative AI with proven track record of building scalable applications, optimizing performance, and implementing AI-powered solutions that drive business growth. Experienced in architecting end-to-end systems from database design to frontend implementation and DevOps automation.</div>
+                </div>
+
+                <h2>EXPERIENCE</h2>
+                
+                <div class="job">
+                    <div class="job-title">
+                        <span>Europ Assistance, Mumbai — Full-stack Developer</span>
+                        <span>May 2024 - Present</span>
+                    </div>
+                    <ul>
+                        <li>Built generative AI recommendation system for HDFC Bank concierge portal that increased cross-selling revenue by 28%</li>
+                        <li>Developed CRM system to capture intelligence on customer spending patterns and activities for personalized service</li>
+                        <li>Created vector database with customer patterns and integrated with GPT for automated recommendations exceeding human agent capabilities</li>
+                        <li>Implemented intelligent concierge tool enabling curated personalized service offerings that traditional agents couldn't provide</li>
+                    </ul>
+                </div>
+                
+                <div class="job">
+                    <div class="job-title">
+                        <span>Neosoft, Mumbai — Full-stack Developer</span>
+                        <span>Sep 2022 - Apr 2024</span>
+                    </div>
+                    <ul>
+                        <li>Implemented MERN stack to build Kotak General Insurance Portal connecting customers, vendors, and investigators</li>
+                        <li>Created failsafe mechanisms for handling banking service dependencies</li>
+                        <li>Managed development and DevOps for UAT & Production environments</li>
+                    </ul>
+                </div>
+                
+                <div class="job">
+                    <div class="job-title">
+                        <span>Whitecrow Digital, Mumbai — Full-stack Developer</span>
+                        <span>Dec 2021 - Aug 2022</span>
+                    </div>
+                    <ul>
+                        <li>Designed centralized email engagement system using Redis-bee-queue & AWS SES</li>
+                        <li>Optimized APIs by offloading heavy operations to background tasks via AWS SQS</li>
+                        <li>Implemented dynamic Redis-based caching and created API gateway encapsulation layer</li>
+                    </ul>
+                </div>
+                
+                <div class="job">
+                    <div class="job-title">
+                        <span>Vitorscape, Mumbai — Co-founder & Backend Developer</span>
+                        <span>Jan 2020 - Dec 2021</span>
+                    </div>
+                    <ul>
+                        <li>Built attendance and payroll system for Classic Marble using Node.js & React</li>
+                        <li>Designed architecture for facial recognition-based management using Flask, React & MongoDB</li>
+                        <li>Developed publish-subscribe backend connecting web servers to AGVs via MQTT</li>
+                    </ul>
+                </div>
+                
+                <div class="job">
+                    <div class="job-title">
+                        <span>Sensus Labs, Mumbai — Associate Backend Developer</span>
+                        <span>Aug 2018 - Sep 2019</span>
+                    </div>
+                    <ul>
+                        <li>Developed backend connecting ML model outputs to MongoDB using Express.js and Node.js</li>
+                        <li>Built deep learning model using TensorFlow & OpenCV for customer demographics analysis</li>
+                    </ul>
+                </div>
+
+                <div class="two-column">
+                    <div class="column">
+                        <h2>TECHNICAL SKILLS</h2>
+                        <ul>
+                            <li><span class="skill-category">Languages:</span> JavaScript/TypeScript, Node.js, Python, HTML5, CSS3, SQL</li>
+                            <li><span class="skill-category">Frontend:</span> React.js, Redux, Next.js, Tailwind CSS, Material UI, Responsive Design</li>
+                            <li><span class="skill-category">Backend:</span> Express.js, Flask, RESTful APIs, GraphQL, Microservices, JWT</li>
+                            <li><span class="skill-category">Databases:</span> MongoDB, PostgreSQL, Redis, Elasticsearch, Vector Databases</li>
+                            <li><span class="skill-category">Cloud/DevOps:</span> AWS (EC2, S3, SES, SQS, Lambda), Docker, CI/CD, Git</li>
+                            <li><span class="skill-category">Messaging:</span> RabbitMQ, MQTT, WebSockets, Pusher, Kafka</li>
+                            <li><span class="skill-category">ML/AI:</span> Generative AI, LLMs, TensorFlow, OpenCV, Vector DBs, GPT Integration</li>
+                            <li><span class="skill-category">Other:</span> Agile Methodologies, System Design, Performance Optimization</li>
+                        </ul>
+                    </div>
+                    <div class="column">
+                        <h2>EDUCATION</h2>
+                        <div>Bachelor in Information Technology</div>
+                        
+                        <h2>BLOGS</h2>
+                        <ul>
+                            <li>Understanding Node.js Event-driven structure</li>
+                            <li>Reddit Roastme NLP & Computer vision-based bot</li>
+                            <li>Feature detections in computer vision</li>
+                        </ul>
+                    </div>
+                </div>
+            </body>
+            </html>
+            `;
+
+            // Create a Blob from the HTML content
+            const blob = new Blob([cvContent], { type: 'text/html' });
+            const url = URL.createObjectURL(blob);
+
+            // Create an anchor element and trigger the download
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'Saurabh_Pandey_CV.html';
+            document.body.appendChild(a);
+            a.click();
+
+            // Clean up
+            setTimeout(() => {
+                document.body.removeChild(a);
+                URL.revokeObjectURL(url);
+                modal.classList.remove('active');
+            }, 100);
+        });
+    </script>
 </body>
+
 </html>
